@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root{
@@ -19,7 +20,9 @@
       --slot-opacity:.35;
       --select-ring: rgba(44,119,255,.45);
       --select-bg: transparent;
-      --podium-1: #ffd700; --podium-2: #c0c0c0; --podium-3: #cd7f32;
+      --podium-1: #ffd700;
+      --podium-2: #c0c0c0;
+      --podium-3: #cd7f32;
     }
     :root[data-theme="pastel"]{ }
     :root[data-theme="chalk"]{
@@ -51,41 +54,114 @@
     .toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 100; left: 50%; transform: translateX(-50%); bottom: 30px; opacity: 0; transition: opacity 0.3s, visibility 0.3s; }
     .toast.show { visibility: visible; opacity: 1; }
     
-    .modal-content { background: white; color: #1f2937; padding: 1.5rem; border-radius: 1rem; width: 100%; max-width: 400px; box-shadow: 0 18px 42px rgba(0,0,0,.35); text-align: center; }
-    .modal-content h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .modal-content p { color: #4b5563; margin-bottom: 1rem; }
-    .modal-content input { width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.5rem; margin-bottom: 1rem; text-align: center; font-size: 1rem; }
-    .modal-content button {
+    /* Join Page Styles */
+    .join-container {
         width: 100%;
-        padding: 0.75rem 1rem;
-        border-radius: 0.5rem;
-        border: 0;
-        font-weight: 700;
-        cursor: pointer;
-        color: white;
-        transition: background-color .2s;
-        background-color: #4f46e5;
+        max-width: 420px;
     }
-    
-    .app { display: grid; grid-template-columns: 1fr; gap: 1.5rem; width: 100%; max-width: 1200px; height: 100%; padding: 1rem; margin: 0 auto; place-items: center;}
+    .join-card {
+        background: #ffffff;
+        color: #1f2937;
+        padding: 2rem;
+        border-radius: 1rem;
+        width: 100%;
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04);
+        text-align: center;
+    }
+    .join-card-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #4b5563;
+    }
+    .join-separator {
+        text-align: center;
+        color: #9ca3af;
+        margin: 1.25rem 0;
+        font-weight: 500;
+    }
+    .join-card h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .join-card p { color: #4b5563; margin-bottom: 1.5rem; }
+    .join-card input { width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.5rem; margin-bottom: 1rem; text-align: center; font-size: 1rem; }
+    .join-card button { width: 100%; padding: 0.75rem 1rem; border-radius: 0.5rem; border: 0; font-weight: 700; cursor: pointer; color: white; transition: background-color .2s; }
+    .btn-purple { background-color: #4f46e5; }
+    .btn-purple:hover { background-color: #4338ca; }
+    .btn-green { background-color: #22c55e; }
+    .btn-green:hover { background-color: #16a34a; }
+
+    /* Responsive Layout */
+    .app { 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      gap: 1.5rem; 
+      width: 100%;
+      max-width: 1200px;
+      height: 100%;
+      padding: 1rem;
+      margin: 0 auto;
+    }
     .main-game { display: flex; flex-direction: column; align-items: center; width: 100%; height: 100%; }
     
-    .game-header { display: flex; justify-content: space-between; align-items: flex-start; width: 100%; max-width: 550px; margin-bottom: 1rem; }
-    .header-left, .header-right { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+    /* New Game Header */
+    .game-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 550px;
+        margin-bottom: 1rem;
+    }
+    .header-left, .header-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
     .header-left { align-items: flex-start; }
     .header-right { align-items: flex-end; }
-    .header-center { flex: 1.5; text-align: center; }
+    .header-center {
+        flex: 1.5;
+        text-align: center;
+    }
     .icon-btn-group { display: flex; gap: 0.5rem; }
-    .icon-btn { background: var(--tile-bg); border: 2px solid var(--tile-border); color: var(--ink-soft); width: 44px; height: 44px; border-radius: 0.5rem; cursor: pointer; font-size: 1.25rem; transition: all 0.2s; }
-    .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .icon-btn {
+        background: var(--tile-bg);
+        border: 2px solid var(--tile-border);
+        color: var(--ink-soft);
+        width: 44px;
+        height: 44px;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 1.25rem;
+        transition: all 0.2s;
+    }
+    .icon-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
     #player-score-display { font-weight: 600; font-size: 1rem; color: var(--ink); }
     #puzzle-progress { font-weight: 600; font-size: 1rem; color: var(--accent); }
-    .target-box { background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 0.75rem; display: inline-block; margin-bottom: 0.5rem; }
+    .target-box {
+        background: var(--accent);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+    }
     .target-box .target-label { font-size: 0.875rem; opacity: 0.9; }
     .target-box .target-number { font-size: 1.75rem; font-weight: 700; line-height: 1; }
     #game-timer { font-size: 1.25rem; font-weight: 600; color: var(--ink); }
 
-    #game-board, #player-finished-view { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+
+    /* Game Board */
+    #game-board, #player-finished-view {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
     .grid{display:grid; grid-template-columns:repeat(2, 1fr); grid-auto-rows:1fr; gap:1rem; justify-content:center; margin: 1rem 0; width: 100%; max-width: 380px; aspect-ratio: 1 / 1;}
     .tile,.slot{width:100%;height:100%; border-radius:1rem; background:var(--tile-bg); border:4px solid var(--tile-border); display:flex; align-items:center; justify-content:center; font-size: clamp(2.5rem, 10vw, 4rem); font-weight:700; color:var(--num); user-select:none;}
     .tile { cursor:pointer; transition:transform .08s ease, border-color .15s ease, box-shadow .15s ease; }
@@ -103,11 +179,101 @@
     .op.divide{background:var(--op-divide)}
     .op.sel{transform: scale(0.9);}
     
-    #game-over-view { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 1rem; }
-    .results-container { width: 100%; max-width: 600px; text-align: center; }
-    .results-container h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; }
-    .podium { display: flex; align-items: flex-end; justify-content: center; gap: 0.5rem; height: 250px; margin-bottom: 2rem; }
-    .podium-stand { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; color: var(--ink); padding-bottom: 1rem; border-radius: 0.5rem 0.5rem 0 0; box-shadow: var(--shadow); }
+    .sidebar { background: var(--card-bg); border: 2px solid var(--card-border); border-radius: 1rem; padding: 1rem; display: flex; flex-direction: column; order: -1; }
+    .leaderboard h3 { color: var(--card-ink); font-weight: 700; font-size: 1.25rem; }
+    .leaderboard.collapsed #player-list { display: none; }
+    .player-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 0.5rem; border-radius: 0.5rem; margin-bottom: 0.25rem; }
+    .player-row.is-me { background-color: rgba(127,127,127, 0.2); border: 1px solid var(--accent); }
+    .player-name { font-weight: 600; color: var(--card-ink); }
+    .player-progress { font-weight: 700; font-size: 1rem; color: var(--accent); text-align: right; }
+    
+    /* Modals & Popups */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: flex; align-items: center; justify-content: center; z-index: 50; padding: 1rem;}
+    .modal-content { background: white; color: #1f2937; padding: 1.5rem; border-radius: 1rem; width: 100%; max-width: 400px; box-shadow: 0 18px 42px rgba(0,0,0,.35); text-align: center; }
+    #admin-settings-modal .modal-content { max-width: 450px; text-align: left; padding: 2rem;}
+    .modal-content h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .modal-content p { color: #4b5563; margin-bottom: 1rem; }
+    .modal-content button:disabled { background-color: #9ca3af; cursor: not-allowed; }
+    .modal-content input { width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.5rem; margin-bottom: 1rem; text-align: center; font-size: 1rem; }
+    .modal-content button { width: 100%; padding: 0.75rem 1rem; border-radius: 0.5rem; border: 0; font-weight: 700; cursor: pointer; background-color: #4f46e5; color: white; transition: background-color .2s; }
+    .modal-content button:hover:not(:disabled) { background-color: #4338ca; }
+    .modal-content .secondary-action { background: #e5e7eb; color: #374151; margin-top: 0.5rem; }
+    .modal-content .secondary-action:hover:not(:disabled) { background: #d1d5db; }
+    
+    .host-controls { margin-top: auto; padding-top: 1rem; border-top: 2px solid var(--card-border); }
+    .host-controls button { width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 0; font-weight: 700; cursor: pointer; background: var(--accent); color: white; }
+    
+    /* Admin Lobby Styles */
+    .admin-lobby-container { text-align: center; padding: 1.25rem; }
+    #game-code-display { font-size: clamp(3rem, 20vw, 5rem); font-weight: bold; color: var(--accent); letter-spacing: clamp(0.25rem, 2vw, 0.625rem); background: var(--card-bg); padding: 1.25rem 2.5rem; border-radius: 1.25rem; border: 4px solid var(--card-border); margin: 1.25rem 0; display: inline-block; }
+    .player-lobby-box {
+        background: rgba(127, 127, 127, 0.1);
+        border-radius: 1rem;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        max-width: 450px;
+        margin: 1rem auto;
+    }
+    .player-lobby-box h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    #lobby-player-name-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        min-height: 40px;
+    }
+    .lobby-player-tag {
+        background-color: var(--card-bg);
+        color: var(--card-ink);
+        padding: 0.5rem 1.25rem;
+        border-radius: 9999px;
+        font-weight: 500;
+        border: 1px solid var(--card-border);
+    }
+
+    /* Game Over / Podium Styles */
+    #game-over-view {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+    }
+    .results-container {
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+    }
+    .results-container h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+    .podium {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 0.5rem;
+        height: 250px;
+        margin-bottom: 2rem;
+    }
+    .podium-stand {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        color: var(--ink);
+        padding-bottom: 1rem;
+        border-radius: 0.5rem 0.5rem 0 0;
+        box-shadow: var(--shadow);
+    }
     .podium-stand .player-name { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem; }
     .podium-stand .player-score { font-size: 1rem; font-weight: 500; }
     .podium-stand .rank { font-size: 2.5rem; font-weight: 700; margin-top: 0.5rem; }
@@ -116,15 +282,69 @@
     .podium-3 { order: 3; height: 65%; background: var(--podium-3); }
     .podium-1 .fa-crown { color: #f9a825; font-size: 2rem; margin-bottom: 0.5rem; }
 
-    .other-rankings { margin-top: 1rem; background: var(--card-bg); border: 2px solid var(--card-border); border-radius: 1rem; padding: 1rem; }
+    .other-rankings {
+        margin-top: 1rem;
+        background: var(--card-bg);
+        border: 2px solid var(--card-border);
+        border-radius: 1rem;
+        padding: 1rem;
+    }
     .other-rankings h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
     #other-rankings-list { list-style: none; padding: 0; }
-    #other-rankings-list li { display: flex; justify-content: space-between; padding: 0.5rem; border-radius: 0.375rem; }
+    #other-rankings-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+    }
     #other-rankings-list li:nth-child(odd) { background-color: rgba(127,127,127,0.05); }
+    
+    .theme-picker { margin-bottom: 1.25rem; }
+    .theme-picker label { color: var(--card-ink); font-weight: 600; font-size: 1rem; display: block; margin-bottom: 0.375rem;}
+    .theme-select { width: 100%; padding: 0.625rem; border-radius: 0.5rem; border: 2px solid var(--card-border); background: var(--tile-bg); color: var(--ink); font-family: 'Kanit', sans-serif; font-size: 1rem; -webkit-appearance: none; appearance: none; cursor: pointer; }
+    
+    #admin-icon-btn { position: absolute; top: 1rem; right: 1rem; z-index: 20; padding: 0.75rem; border-radius: 9999px; color: var(--ink-soft); background-color: transparent; transition: background-color 0.2s, color 0.2s; border: none; cursor: pointer; }
+    #admin-icon-btn:hover { background-color: rgba(127,127,127, 0.1); color: var(--ink); }
     
     .loader { border: 5px solid #f3f3f3; border-top: 5px solid var(--accent); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     
+    body.player-view .app { grid-template-columns: 1fr; place-items: center; }
+    body.player-view .sidebar { display: none; }
+    body.player-view .main-game { justify-content: flex-start; }
+    
+    .setting-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+    }
+    .setting-group label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1.5rem;
+        border: 2px solid #d1d5db;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        aspect-ratio: 1 / 1;
+        font-weight: 500;
+        color: #4b5563;
+    }
+    .setting-group input[type="radio"]:checked + label {
+        background-color: #4f46e5;
+        border-color: #4f46e5;
+        color: white;
+        font-weight: 600;
+    }
+    .setting-group input[type="radio"] {
+        display: none;
+    }
+
+    /* Tablet and larger screens */
     @media (min-width: 640px) {
       .ops{gap:1rem;}
       .op{width:70px; height:70px;}
@@ -132,14 +352,31 @@
       .grid { max-width: 420px; }
     }
     
+    /* Laptop and larger screens */
+    @media (min-width: 900px) {
+      .app { 
+        grid-template-columns: 300px 1fr; 
+        height: min(700px, 90vh);
+        padding: 1.25rem;
+      }
+      .sidebar { order: 0; }
+      .grid { max-width: 450px; }
+      .main-game { justify-content: center; }
+    }
     .hidden { display: none !important; }
   </style>
 </head>
 <body>
   
+  <button id="admin-icon-btn" title="ผู้ดูแลระบบ">
+    <i class="fas fa-user-shield fa-lg"></i>
+  </button>
+
+  <!-- Join -->
   <div id="player-join-view" class="center-container">
     <h1 class="text-5xl font-bold mb-4" style="color: var(--ink);">24 Battle</h1>
     <div class="w-full max-w-md flex flex-col items-center gap-4">
+        <!-- Join Competition Card -->
         <div class="modal-content w-full">
             <h2><i class="fas fa-users mr-2"></i>เข้าร่วมแข่งขัน</h2>
             <p>ใส่รหัสเกมและชื่อเล่นของคุณ</p>
@@ -150,6 +387,7 @@
 
         <div class="text-center text-gray-500 my-1 font-semibold" style="color: var(--ink-soft);">หรือ</div>
 
+        <!-- Practice Mode Card -->
         <div class="modal-content w-full">
              <h2><i class="fas fa-user mr-2"></i>โหมดฝึกซ้อม</h2>
              <p>เล่นคนเดียวเพื่อฝึกฝนทักษะ</p>
@@ -166,7 +404,90 @@
     </div>
   </div>
 
+  <div id="admin-login-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h2>เข้าสู่ระบบผู้ดูแล</h2>
+      <p>กรุณาใส่รหัสผ่าน</p>
+      <input type="password" id="admin-password-input" placeholder="รหัสผ่าน">
+      <button id="admin-login-btn">เข้าสู่ระบบ</button>
+      <button id="admin-back-btn" class="secondary-action">กลับ</button>
+    </div>
+  </div>
+
+  <div id="admin-lobby-view" class="hidden center-container">
+      <div class="admin-lobby-container">
+          <h2 class="text-2xl font-semibold">เริ่มเกม: เกม 24</h2>
+          <p class="text-lg mt-2">ให้นักเรียนเข้าร่วมด้วยรหัสนี้:</p>
+          <div id="game-code-display">--</div>
+          <div class="player-lobby-box">
+              <h3>ผู้เล่นที่เข้าร่วม (<span id="lobby-player-count">0</span>)</h3>
+              <div id="lobby-player-name-list">
+                  <!-- Player names will be rendered here -->
+              </div>
+          </div>
+          <button id="open-settings-btn" class="mt-4 px-8 py-3 text-xl rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+              เริ่มเกม
+          </button>
+      </div>
+  </div>
+  
+  <div id="admin-settings-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+          <h2 class="text-center font-bold text-2xl mb-6">ตั้งค่าเกม</h2>
+          
+          <div class="mb-4">
+              <label for="time-limit-input" class="block text-gray-700 text-sm font-bold mb-2">เวลา (วินาที)</label>
+              <input type="number" id="time-limit-input" value="180" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-center">
+          </div>
+
+          <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2">รูปแบบการแสดงผลลัพธ์</label>
+              <div class="setting-group">
+                  <div>
+                      <input type="radio" id="mode-immediate" name="leaderboardMode" value="immediate" checked>
+                      <label for="mode-immediate">แสดงผลทันที</label>
+                  </div>
+                  <div>
+                      <input type="radio" id="mode-wait" name="leaderboardMode" value="wait">
+                      <label for="mode-wait">รอจนหมดเวลา</label>
+                  </div>
+              </div>
+          </div>
+          
+          <button id="start-game-btn" class="flex items-center justify-center w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline text-lg">
+              <i class="fas fa-play mr-2"></i>
+              เริ่มการแข่งขัน
+          </button>
+          <button id="cancel-settings-btn" class="secondary-action w-full mt-3">ยกเลิก</button>
+      </div>
+  </div>
+
+
   <div id="game-view" class="app hidden">
+    <div class="sidebar">
+      <div class="theme-picker">
+        <label for="themeSelect">ธีม</label>
+        <select id="themeSelect" class="theme-select" aria-label="เลือกธีม">
+          <option value="contrast">ความคมชัดสูง</option>
+          <option value="pastel">พาสเทล</option>
+          <option value="chalk">กระดานดำ</option>
+          <option value="blocks">บล็อกสี</option>
+          <option value="neon">นีออน</option>
+        </select>
+      </div>
+      <div class="leaderboard flex-grow">
+        <div class="flex justify-between items-center mb-2 pb-2 border-b-2" style="border-color: var(--card-border);">
+            <h3>ผู้เล่นในห้อง</h3>
+            <button id="toggle-leaderboard-btn" class="icon-btn !w-10 !h-10 hidden" title="ซ่อน/แสดงรายชื่อผู้เล่น">
+                <i class="fas fa-eye-slash"></i>
+            </button>
+        </div>
+        <div id="player-list"></div>
+      </div>
+       <div id="host-controls" class="host-controls hidden">
+        <button id="end-game-btn">บังคับจบเกม</button>
+      </div>
+    </div>
     <div class="main-game">
         <div class="game-header">
             <div class="header-left">
@@ -209,14 +530,17 @@
   <div id="game-over-view" class="hidden center-container">
     <div class="results-container">
       <h2><i class="fas fa-trophy mr-2"></i>สรุปผลการแข่งขัน!</h2>
-      <div class="podium" id="podium-container"></div>
+      <div class="podium" id="podium-container">
+        <!-- Podium stands will be rendered here -->
+      </div>
       <div class="other-rankings" id="other-rankings-container">
         <h3>อันดับอื่นๆ</h3>
         <ol id="other-rankings-list"></ol>
       </div>
-      <button id="player-home-btn" class="mt-8 px-6 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300">กลับหน้าแรก</button>
+      <button id="back-to-lobby-btn" class="mt-8 px-6 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300">กลับไปที่ล็อบบี้</button>
     </div>
   </div>
+
 
   <div class="toast" id="toast"></div>
 
